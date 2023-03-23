@@ -10,7 +10,7 @@ import Projects from "@/components/Projects";
 import ContactMe from "@/components/ContactMe";
 import { Experience, PageInfo, Project, Skill, Social } from "@/typings";
 import { fetchPageInfo } from "@/utils/fetchPageInfo";
-import { fetchExperiences } from "@/utils/fetchProjects copy";
+import { fetchExperiences } from "@/utils/fetchExperiences";
 import { fetchSkills } from "@/utils/fetchSkills";
 import { fetchProjects } from "@/utils/fetchProjects";
 import { fetchSocial } from "@/utils/fetchSocials";
@@ -33,26 +33,26 @@ const Home = ({ pageInfo, experiences, skills, projects, socials }: Props) => {
         <title>My Portfolio</title>
       </Head>
 
-      <Header />
+      <Header socials={socials} />
 
       <section id="hero" className="snap-start">
-        <Hero />
+        <Hero pageInfo={pageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About />
+        <About pageInfo={pageInfo} />
       </section>
 
       <section id="education" className="snap-center">
-        <Education />
+        <Education experiences={experiences} />
       </section>
 
       <section id="skills" className="snap-start">
-        <Skills />
+        <Skills skills={skills} />
       </section>
 
       <section id="projects" className="snap-start">
-        <Projects />
+        <Projects projects={projects} />
       </section>
 
       <section id="contact" className="snap-start">

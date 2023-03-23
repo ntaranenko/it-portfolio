@@ -79,7 +79,7 @@ export default function ContactMe({}: Props) {
           />
           <button
             type="submit"
-            className="bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold text-lg"
+            className="bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold text-lg hover:bg-[#F7AB0A]/60 uppercase transition duration-300"
           >
             Submit
           </button>

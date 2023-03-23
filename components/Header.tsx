@@ -2,10 +2,13 @@ import React from "react";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Social } from "@/typings";
 
-type Props = {};
+type Props = {
+  socials: Social[];
+};
 
-export default function Header({}: Props) {
+export default function Header({ socials }: Props) {
   return (
     <header className="sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center">
       <motion.div
@@ -24,29 +27,18 @@ export default function Header({}: Props) {
         }}
         className="flex flex-row items-center"
       >
-        {/* Social Icons */}
-        <SocialIcon
-          url="https://www.instagram.com/nike.axwell"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://github.com/SOOMRAQ"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://www.linkedin.com/in/nikita-taranenko"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="https://t.me/NikeAxwell"
-          fgColor="gray"
-          bgColor="transparent"
-        />
+        {socials.map((social) => (
+          <SocialIcon
+            className="hover:scale-110 transition duration-300"
+            key={social._id}
+            url={social.url}
+            fgColor="gray"
+            bgColor="transparent"
+            target="_blank"
+          />
+        ))}
       </motion.div>
-      {/* <Link href="#contact"> */}
+
       <motion.div
         initial={{
           x: 500,
@@ -65,16 +57,21 @@ export default function Header({}: Props) {
       >
         {/* Avatar */}
         <SocialIcon
+          url="#contact"
           className="cursor-pointer"
           network="email"
           fgColor="gray"
           bgColor="transparent"
         />
-        <p className="uppercase hidden md:inline-flex text-sm text-gray-400">
-          Get In Touch
+        <p className=" uppercase hidden md:inline-flex text-sm text-gray-400">
+          <Link
+            className="hover:text-[#F7BA0A]/60 transition-colors duration-300"
+            href="#contact"
+          >
+            Get In Touch
+          </Link>
         </p>
       </motion.div>
-      {/* </Link> */}
     </header>
   );
 }
